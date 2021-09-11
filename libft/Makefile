@@ -6,80 +6,95 @@
 #    By: robrodri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/31 11:50:54 by robrodri          #+#    #+#              #
-#    Updated: 2021/08/18 11:56:27 by robrodri         ###   ########.fr        #
+#    Updated: 2021/09/11 18:43:07 by robrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME 		= libft.a
 
-SRCS	=	ft_atoi.c \
-			get_next_line.c \
-			ft_bzero.c \
-			ft_calloc.c \
-			ft_isalnum.c \
-			ft_isalpha.c \
-			ft_isascii.c \
-			ft_isdigit.c \
-			ft_isprint.c \
-			ft_itoa.c \
-			ft_memccpy.c \
-			ft_memchr.c \
-			ft_memcmp.c \
-			ft_memcpy.c \
-			ft_memmove.c \
-			ft_memset.c \
-			ft_strchr.c \
-			ft_strlcat.c \
-			ft_strlcpy.c \
-			ft_strlen.c \
-			ft_strncmp.c \
-			ft_strnstr.c \
-			ft_strrchr.c \
-			ft_tolower.c \
-			ft_toupper.c \
-			ft_split.c \
-			ft_strjoin.c \
-			ft_strdup.c \
-			ft_strtrim.c \
-			ft_substr.c \
-			ft_putchar_fd.c \
-			ft_putendl_fd.c \
-			ft_putnbr_fd.c \
-			ft_putstr_fd.c \
-			ft_putchar.c \
-			ft_putstr.c \
-			ft_putnbr.c \
-			ft_putendl.c \
-			ft_strmapi.c \
-			ft_putnbr_base.c \
-			ft_putnbr_base_long.c
+CC 			= gcc
+CFLAGS 		= -Wall -Werror -Wextra
 
-SRCS_BONUS	= ft_lstsize.c \
-ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_lstlast.c
+SRC_DIR 	= srcs/
+SRC_NAMES 	=  ft_atoi.c \
+				get_next_line.c \
+				ft_bzero.c \
+				ft_calloc.c \
+				ft_isalnum.c \
+				ft_isalpha.c \
+				ft_isascii.c \
+				ft_isdigit.c \
+				ft_isprint.c \
+				ft_itoa.c \
+				ft_memccpy.c \
+				ft_memchr.c \
+				ft_memcmp.c \
+				ft_memcpy.c \
+				ft_memmove.c \
+				ft_memset.c \
+				ft_strchr.c \
+				ft_strlcat.c \
+				ft_strlcpy.c \
+				ft_strlen.c \
+				ft_strncmp.c \
+				ft_strnstr.c \
+				ft_strrchr.c \
+				ft_tolower.c \
+				ft_toupper.c \
+				ft_split.c \
+				ft_strjoin.c \
+				ft_strdup.c \
+				ft_strtrim.c \
+				ft_substr.c \
+				ft_putchar_fd.c \
+				ft_putendl_fd.c \
+				ft_putnbr_fd.c \
+				ft_putstr_fd.c \
+				ft_putchar.c \
+				ft_putstr.c \
+				ft_putnbr.c \
+				ft_putendl.c \
+				ft_strmapi.c \
+				ft_putnbr_base.c \
+				ft_putnbr_base_long.c \
+				ft_strcmp.c
 
-NAME	= libft.a
+SRCS 		= $(addprefix $(SRC_DIR), $(SRC_NAMES))
+OBJ_DIR 	= objs/
+OBJ_NAMES 	= $(SRC_NAMES:.c=.o)
+OBJS 		= $(addprefix $(OBJ_DIR), $(OBJ_NAMES))
 
-OBJS	= ${SRCS:.c=.o}
-OBJS_B	= ${SRCS_BONUS:.c=.o}
+HDR_NAMES 	= libft.h
+HDR_DIR 	= includes/
+HDRS 		= $(addprefix $(HDR_DIR),$(HDR_NAMES))
 
-CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra
+HDR_INC 	= $(addprefix -I./, $(HDR_DIR))
 
-all: ${NAME}
+RED			= \033[0;31m
+GREEN 		= \033[0;32m
+NONE 		= \033[0m
 
-${NAME}: ${OBJS}
-	${CC} ${CFLAGS} -c ${SRCS}
-	ar rcs ${NAME} ${OBJS}
+all: $(NAME) $(HDRS)
 
-bonus: ${OBJS_B}
-	${CC} ${CFLAGS} -c ${SRCS_BONUS}
-	ar rcs ${NAME} ${OBJS_B}
+$(NAME): $(OBJ_DIR) $(OBJS) $(HDRS)
+	@ar rc $@ $(OBJS)
+	@ranlib $@
+	@echo "\t[ $(GREEN)✔$(NONE) ] libft/libft.a library"
+
+$(OBJ_DIR):
+	@mkdir $@
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HDRS)
+	@$(CC) $(CFLAGS) $(HDR_INC) -c $< -o $@
 
 clean:
-	rm -f ${OBJS} ${OBJS_B}
+	@rm -Rf $(OBJ_DIR)
+	@echo "\t[ $(RED)✗$(NONE) ] libft/$(OBJ_DIR) directory"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "\t[ $(RED)✗$(NONE) ] libft/$(NAME) library"
 
-re: fclean all bonus
+re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

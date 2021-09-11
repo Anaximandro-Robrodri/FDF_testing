@@ -56,7 +56,7 @@ static void	ft_draw_vertical(t_axis *x, t_draw c, t_data *d, t_values *v)
 	ft_bresenham(x, d, v->color[c.y - 1][c.x]);
 }
 
-void	ft_draw(t_values *val, t_data *data)
+int	ft_draw(t_values *val, t_data *data)
 {
 	t_draw	crd;
 	t_axis	axis;
@@ -75,4 +75,5 @@ void	ft_draw(t_values *val, t_data *data)
 		}
 		crd.y++;
 	}
+	return (0);
 }

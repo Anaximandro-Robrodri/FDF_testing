@@ -6,7 +6,7 @@
 /*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 15:55:08 by robrodri          #+#    #+#             */
-/*   Updated: 2021/09/05 18:07:04 by robrodri         ###   ########.fr       */
+/*   Updated: 2021/09/11 19:08:02 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	get_line(char *line, t_values *val)
 		val->nbr[val->y][i] = ft_atoi(aux[i]);
 		if (val->nbr[val->y][i] > MAX_H)
 			val->nbr[val->y][i] = MAX_H;
+		if (val->nbr[val->y][i] < MIN_H)
+			val->nbr[val->y][i] = MIN_H;
 		get_color(aux[i], val, i);
 		free(aux[i]);
 		i++;

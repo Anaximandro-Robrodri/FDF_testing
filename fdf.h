@@ -6,7 +6,7 @@
 /*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 14:44:12 by robrodri          #+#    #+#             */
-/*   Updated: 2021/09/10 13:52:18 by robrodri         ###   ########.fr       */
+/*   Updated: 2021/09/11 19:06:22 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 # define WIN_L 1920
 # define WIN_H 1080
 # define MAX_H 500
+# define MIN_H -500
 # include <mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
-# include "./libft/libft.h"
+# include "./libft/includes/libft.h"
 
 typedef struct s_program
 {
@@ -81,7 +82,7 @@ int		ft_error_control(char *line, t_values *val);
 int		get_len(char *line, t_values *val);
 int		ft_split_len(char **str);
 void	get_line(char *line, t_values *val);
-void	ft_draw(t_values *val, t_data *data);
+int		ft_draw(t_values *val, t_data *data);
 void	get_f_amp(t_values *val);
 void	perspec(float *x, float *y, int z, t_values *val);
 void	free_matrix(t_values *val);
@@ -93,4 +94,5 @@ void	zoom_changes(t_fdf *fdf, int keycode);
 void	dsp_changes(t_fdf *fdf, int keycode);
 void	mlx_image(t_program *mlx_p, t_data *img);
 int		close_win(t_fdf *fdf);
+
 #endif
