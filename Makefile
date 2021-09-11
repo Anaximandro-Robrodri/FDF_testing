@@ -6,7 +6,7 @@
 #    By: robrodri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/19 14:44:36 by robrodri          #+#    #+#              #
-#    Updated: 2021/09/10 11:38:36 by robrodri         ###   ########.fr        #
+#    Updated: 2021/09/10 14:16:01 by robrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,3 +49,5 @@ fclean: clean
 	$(MAKE) fclean -C $(LIBFT_DIR)
 	rm -rf $(NAME)
 re: fclean all
+
+.PHONY: all re m clean fclean bonus

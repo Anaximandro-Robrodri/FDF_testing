@@ -64,6 +64,8 @@ void	get_line(char *line, t_values *val)
 	while (aux[i])
 	{
 		val->nbr[val->y][i] = ft_atoi(aux[i]);
+		if (val->nbr[val->y][i] > MAX_H)
+			val->nbr[val->y][i] = MAX_H;
 		get_color(aux[i], val, i);
 		free(aux[i]);
 		i++;

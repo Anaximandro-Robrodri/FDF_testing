@@ -6,7 +6,7 @@
 /*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 14:44:12 by robrodri          #+#    #+#             */
-/*   Updated: 2021/09/10 11:34:20 by robrodri         ###   ########.fr       */
+/*   Updated: 2021/09/10 13:52:18 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_H
 # define WIN_L 1920
 # define WIN_H 1080
+# define MAX_H 500
 # include <mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
