@@ -6,5 +6,7 @@ Representation of a 3D Landscape using a given set of instructions, including wi
 INSTRUCTIONS
 
 I = Zoom in
+
 O = Zoom out
+
 Keys = Move
